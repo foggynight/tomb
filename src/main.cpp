@@ -4,8 +4,12 @@
  * Released under the GPLv2 license
  */
 
+#include <clocale>
+
 int main()
 {
+    std::setlocale(LC_ALL, "en_US.UTF-8");
+
     return 0;
 }
 
