@@ -1,5 +1,11 @@
 # rogue-like
 
+Take control of an indigenous Canadian in pre-colonial North America, lost in a
+procedurally generated forest.
+
+As the title suggests, *rogue-like* is an ascii game inspired by the classic
+dungeon crawler *rogue*.
+
 ## License
 
 Copyright (C) 2021 Robert Coffey
