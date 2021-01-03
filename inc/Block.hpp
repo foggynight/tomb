@@ -18,7 +18,6 @@ const int BLOCK_WIDTH = 256;  // Width of each Block's Tile array
 const int BLOCK_HEIGHT = 256; // Height of each Block's Tile array
 
 struct Block {
-public:
     std::vector<Block*> neighbourVec(8);    // Vector of pointers to neighbouring blocks
     Tile tileArr[BLOCK_WIDTH*BLOCK_HEIGHT]; // Array of Tiles contained in this block
 };
