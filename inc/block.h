@@ -17,8 +17,8 @@
 #define NEIGHBOUR_COUNT 8   // Number of neighbours of each block
 
 typedef struct block {
-    tile_t tile_arr[BLOCK_WIDTH*BLOCK_HEIGHT];      // Array of tiles contained in this block
-    struct block_t *neighbour_arr[NEIGHBOUR_COUNT]; // Array of pointers to neighbouring blocks
+    tile_t tile_arr[BLOCK_WIDTH*BLOCK_HEIGHT];    // Array of tiles contained in this block
+    struct block *neighbour_arr[NEIGHBOUR_COUNT]; // Array of pointers to neighbouring blocks
 } block_t;
 
 #endif // BLOCK_H_
