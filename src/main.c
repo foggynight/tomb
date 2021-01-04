@@ -17,7 +17,11 @@ int main()
     signal(SIGINT, finish);
     setlocale(LC_ALL, "en_US.UTF-8");
 
-    finish(0);
+    screen_init();
+
+    for (;;) {
+        screen_step();
+    }
 }
 
 static void finish(int sig)
