@@ -1,0 +1,19 @@
+/**
+ * screen.h - v0.0.0
+ * Copyright (C) 2021 Robert Coffey
+ * Released under the GPLv2 license
+ */
+
+#ifndef SCREEN_H_
+#define SCREEN_H_
+
+void screen_init(void);
+void screen_clear(void);
+void screen_update(void);
+
+#endif // SCREEN_H_
+
+/**
+ * Version History
+ * 0.0.0 - 2021-01-03 - First commit
+ */
