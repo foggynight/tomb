@@ -5,12 +5,25 @@
  */
 
 #include <locale.h>
+#include <signal.h>
+#include <stdlib.h>
+
+#include "screen.h"
+
+static void finish(int sig);
 
 int main()
 {
+    signal(SIGINT, finish);
     setlocale(LC_ALL, "en_US.UTF-8");
 
-    return 0;
+    finish(0);
+}
+
+static void finish(int sig)
+{
+    screen_kill();
+    exit(sig);
 }
 
 /**

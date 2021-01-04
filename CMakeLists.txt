@@ -7,5 +7,9 @@ project(ROGUE-LIKE_PROJECT C)
 find_package(Curses REQUIRED)
 include_directories(inc ${CURSES_INCLUDE_DIR})
 
-add_executable(rogue-like src/main.c)
+add_executable(rogue-like
+    src/main.c
+    src/screen.c
+)
+
 target_link_libraries(rogue-like ${CURSES_LIBRARIES})
