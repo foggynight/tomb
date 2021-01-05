@@ -18,7 +18,7 @@ void screen_init(void)
 
     if (has_colors()) {
         start_color();
-        init_pair(1, COLOR_RED,   COLOR_BLACK);
+        init_pair(1, COLOR_RED, COLOR_BLACK);
         attrset(COLOR_PAIR(1));
     }
 }
