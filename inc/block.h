@@ -12,9 +12,8 @@
 
 #include "tile.h"
 
-#define BLOCK_HEIGHT   8 // Height of each block's tile array
-#define BLOCK_WIDTH    8 // Width of each block's tile array
-#define NEIGHBOR_COUNT 8 // Number of neighbors of each block
+#define BLOCK_HEIGHT 8 // Height of each block's tile array
+#define BLOCK_WIDTH  8 // Width of each block's tile array
 
 typedef struct block {
     struct {
