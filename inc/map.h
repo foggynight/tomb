@@ -3,9 +3,6 @@
  *
  * Map type representing the game map.
  *
- * The map is made up of blocks, each of which contains an array of tiles, and
- * an array of neighbouring blocks.
- *
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  */
@@ -14,7 +11,8 @@
 #define MAP_H_
 
 typedef struct map {
-
+    block_t *root; // Root block of the game map
+    block_t *walk; // Block currently containing the player
 } map_t;
 
 #endif // MAP_H_
