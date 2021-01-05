@@ -13,9 +13,9 @@
 #include <stddef.h>
 
 typedef struct tile {
-    wchar_t symbol;  // Symbol used to represent the tile on screen
-    int colour[2];   // Foreground and background colours of the tile
-    int position[2]; // x-y position of the tile in its containing block
+    int position;   // Position of the tile in its containing block
+    int color_pair; // ncurses color pair containing fore/back-ground colors
+    wchar_t symbol; // Unicode symbol representing the tile on screen
 } tile_t;
 
 #endif // TILE_H_
