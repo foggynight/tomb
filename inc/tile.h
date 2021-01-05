@@ -13,7 +13,6 @@
 #include <stddef.h>
 
 typedef struct tile {
-    int position;   // Position of the tile in its containing block
     int color_pair; // ncurses color pair containing fore/back-ground colors
     wchar_t symbol; // Unicode symbol representing the tile on screen
 } tile_t;
