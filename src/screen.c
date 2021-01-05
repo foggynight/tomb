@@ -6,7 +6,9 @@
 
 #include <ncurses.h>
 
+#include "block.h"
 #include "screen.h"
+#include "tile.h"
 
 void screen_init(void)
 {
@@ -15,20 +17,16 @@ void screen_init(void)
     nonl();
     cbreak();
     noecho();
-
-    if (has_colors()) {
-        start_color();
-        init_pair(1, COLOR_RED, COLOR_BLACK);
-        attrset(COLOR_PAIR(1));
-    }
 }
 
-void screen_step(void)
+void screen_step(tile_t tile_arr[])
 {
-    static int dag = 0;
-    mvaddch(dag%24, dag, getch());
+    for (int y = 0; y < BLOCK_HEIGHT; ++y) {
+        for (int x = 0; x < BLOCK_WIDTH; ++x) {
+            mvaddstr(y, x, tile_arr[y*BLOCK_WIDTH+x].symbol);
+        }
+    }
     refresh();
-    ++dag;
 }
 
 void screen_kill(void)

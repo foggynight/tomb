@@ -7,8 +7,10 @@
 #ifndef SCREEN_H_
 #define SCREEN_H_
 
+#include "tile.h"
+
 void screen_init(void);
-void screen_step(void);
+void screen_step(tile_t tile_arr[]);
 void screen_kill(void);
 
 #endif // SCREEN_H_
