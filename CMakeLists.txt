@@ -5,7 +5,11 @@ cmake_minimum_required(VERSION 3.0.0)
 project(ROGUE-LIKE_PROJECT C)
 
 find_package(Curses REQUIRED)
-include_directories(inc ${CURSES_INCLUDE_DIR})
+
+include_directories(
+    inc
+    dep/rtb/inc
+    ${CURSES_INCLUDE_DIR})
 
 add_executable(rogue-like
     src/main.c
