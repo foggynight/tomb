@@ -12,14 +12,21 @@
 
 #include "tile.h"
 
-#define BLOCK_WIDTH     256 // Width of each block's tile array
-#define BLOCK_HEIGHT    256 // Height of each block's tile array
-#define NEIGHBOUR_COUNT 8   // Number of neighbours of each block
+#define BLOCK_HEIGHT   8 // Height of each block's tile array
+#define BLOCK_WIDTH    8 // Width of each block's tile array
+#define NEIGHBOR_COUNT 8 // Number of neighbors of each block
 
 typedef struct block {
-    tile_t tile_arr[BLOCK_WIDTH*BLOCK_HEIGHT];    // Array of tiles contained in this block
-    struct block *neighbour_arr[NEIGHBOUR_COUNT]; // Array of pointers to neighbouring blocks
+    struct {
+        struct block *above;
+        struct block *right;
+        struct block *below;
+        struct block *left;
+    } neighbors; // struct of pointers to neighboring blocks
+    tile_t tile_arr[BLOCK_HEIGHT*BLOCK_WIDTH]; // Array of tiles contained in this block
 } block_t;
+
+block_t *block_init(void);
 
 #endif // BLOCK_H_
 
