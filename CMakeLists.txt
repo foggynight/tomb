@@ -12,6 +12,7 @@ include_directories(
     ${CURSES_INCLUDE_DIR})
 
 add_executable(rogue-like
+    src/block.c
     src/main.c
     src/screen.c
 )
