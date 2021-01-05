@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
- */
+ **/
 
 #ifndef MAP_H_
 #define MAP_H_
@@ -20,4 +20,4 @@ typedef struct map {
 /**
  * Version History
  * 0.0.0 - 2021-01-03 - First commit
- */
+ **/

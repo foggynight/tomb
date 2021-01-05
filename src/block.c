@@ -1,11 +1,8 @@
 /**
  * block.c - v0.0.0
- *
- * Block type representing a square block of tiles on the game map.
- *
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
- */
+ **/
 
 #include <stdlib.h>
 #include <rtb/log.h>
@@ -23,4 +20,4 @@ block_t *block_init(void)
 /**
  * Version History
  * 0.0.0 - 2021-01-05 - First commit
- */
+ **/

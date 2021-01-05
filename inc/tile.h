@@ -5,7 +5,7 @@
  *
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
- */
+ **/
 
 #ifndef TILE_H_
 #define TILE_H_
@@ -21,4 +21,4 @@ typedef struct tile {
 /**
  * Version History
  * 0.0.0 - 2021-01-03 - First commit
- */
+ **/

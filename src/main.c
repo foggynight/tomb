@@ -2,7 +2,7 @@
  * main.c - v0.0.0
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
- */
+ **/
 
 #include <locale.h>
 #include <signal.h>
@@ -39,4 +39,4 @@ static void finish(int sig)
 /**
  * Version History
  * 0.0.0 - 2021-01-03 - First commit
- */
+ **/
