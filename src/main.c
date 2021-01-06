@@ -19,14 +19,19 @@ int main()
     signal(SIGINT, finish);
     setlocale(LC_ALL, "en_US.UTF-8");
 
-    map_t game_map;
-    game_map.root = game_map.walk = block_init();
-    game_map.walk->tile_arr[0].symbol = "\u03C6";
+    /* Initialize map */
+    map_t map;
+    map.root = map.walk = block_init();
 
+    /* Initialize player */
+    player_t player = player_init(0, 0, "@");
+
+    /* Initialize screen */
     screen_init();
 
+    /* Game loop */
     for (;;) {
-        screen_step(game_map.walk->tile_arr);
+        screen_step(map.walk->tile_arr);
     }
 }
 
