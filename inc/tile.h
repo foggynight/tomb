@@ -13,7 +13,7 @@
 #include <stddef.h>
 
 typedef struct tile {
-    char *symbol; // Unicode symbol representing the tile on screen
+    char *symb; // Unicode symbol representing the tile
 } tile_t;
 
 #endif // TILE_H_
