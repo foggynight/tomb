@@ -15,6 +15,8 @@ typedef struct map {
     block_t *walk; // Block currently containing the player
 } map_t;
 
+map_t *map_init(void);
+
 #endif // MAP_H_
 
 /**
