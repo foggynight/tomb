@@ -12,7 +12,7 @@ typedef struct player {
         int y;
         int x;
     } pos;
-    char *symbol;
+    const char *symbol;
 } player_t;
 
 player_t *player_init(int y_pos, int x_pos, const char *symbol);
