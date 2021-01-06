@@ -19,6 +19,7 @@ enum cardinal_direction {
 
 /**
  * entity_t: An entity in the game world.
+ * TODO: Pack pos.y and pos.x together
  * @member pos  y-x position of the entity in its containing block
  * @member symb Unicode symb representing the entity
  **/
