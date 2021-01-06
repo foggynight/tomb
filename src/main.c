@@ -9,8 +9,8 @@
 #include <stdlib.h>
 
 #include "block.h"
+#include "entity.h"
 #include "map.h"
-#include "player.h"
 #include "screen.h"
 
 static void finish(int sig);
@@ -20,18 +20,30 @@ int main(void)
     signal(SIGINT, finish);
     setlocale(LC_ALL, "en_US.UTF-8");
 
+    /* Initialize player */
+    entity_t *player = entity_init(0, 0, "@");
+
     /* Initialize map */
     map_t *map = map_init();
-
-    /* Initialize player */
-    player_t *player = player_init(0, 0, "@");
+    map->walk->tile_arr[player->pos.y*BLOCK_WIDTH+player->pos.x].symb = player->symb;
 
     /* Initialize screen */
     screen_init();
 
     /* Game loop */
     for (;;) {
-        screen_step(map->walk->tile_arr);
+        int input = screen_step(map->walk->tile_arr);
+
+        map->walk->tile_arr[player->pos.y*BLOCK_WIDTH+player->pos.x].symb = "";
+
+        switch (input) {
+            case 'w': entity_move(player, NORTH, 1); break;
+            case 'd': entity_move(player, EAST, 1); break;
+            case 's': entity_move(player, SOUTH, 1); break;
+            case 'a': entity_move(player, WEST, 1); break;
+        }
+
+        map->walk->tile_arr[player->pos.y*BLOCK_WIDTH+player->pos.x].symb = player->symb;
     }
 }
 
