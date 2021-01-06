@@ -19,12 +19,14 @@ void screen_init(void)
     noecho();
 }
 
-void screen_step(tile_t tile_arr[])
+int screen_step(tile_t tile_arr[])
 {
+    erase();
     for (int y = 0; y < BLOCK_HEIGHT; ++y)
         for (int x = 0; x < BLOCK_WIDTH; ++x)
             mvaddstr(y, x, tile_arr[y*BLOCK_WIDTH+x].symb);
     refresh();
+    return getch();
 }
 
 void screen_kill(void)
