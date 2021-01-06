@@ -33,16 +33,16 @@ void entity_move(entity_t *targ, enum cardinal_direction dir, int mag)
 
     switch (dir) {
         case NORTH: {
-            targ->pos->y -= mag;
+            targ->pos.y -= mag;
         } break;
         case EAST: {
-            targ->pos->x += mag;
+            targ->pos.x += mag;
         } break;
         case SOUTH: {
-            targ->pos->y += mag;
+            targ->pos.y += mag;
         } break;
         case WEST: {
-            targ->pos->x -= mag;
+            targ->pos.x -= mag;
         } break;
     }
 }
