@@ -15,7 +15,7 @@ enum cardinal_direction {
     EAST,
     SOUTH,
     WEST
-}
+};
 
 /**
  * entity_t: An entity in the game world.
