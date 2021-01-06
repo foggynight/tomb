@@ -8,17 +8,15 @@ set(CURSES_NEED_NCURSES TRUE)
 set(CURSES_NEED_WIDE TRUE)
 find_package(Curses REQUIRED)
 
-include_directories(
-    inc
-    dep/rtb/inc
-    ${CURSES_INCLUDE_DIRS})
+include_directories(inc
+                    dep/rtb/inc
+                    ${CURSES_INCLUDE_DIRS})
 
 add_executable(rogue-like
-    src/block.c
-    src/main.c
-    src/map.c
-    src/player.c
-    src/screen.c
-)
+               src/block.c
+               src/main.c
+               src/map.c
+               src/player.c
+               src/screen.c)
 
 target_link_libraries(rogue-like ${CURSES_LIBRARIES})
