@@ -21,8 +21,7 @@ int main()
     setlocale(LC_ALL, "en_US.UTF-8");
 
     /* Initialize map */
-    map_t map;
-    map.root = map.walk = block_init();
+    map_t *map = map_init();
 
     /* Initialize player */
     player_t *player = player_init(0, 0, "@");
@@ -32,7 +31,7 @@ int main()
 
     /* Game loop */
     for (;;) {
-        screen_step(map.walk->tile_arr);
+        screen_step(map->walk->tile_arr);
     }
 }
 
