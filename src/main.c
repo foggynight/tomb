@@ -10,6 +10,7 @@
 
 #include "block.h"
 #include "map.h"
+#include "player.h"
 #include "screen.h"
 
 static void finish(int sig);
@@ -24,7 +25,7 @@ int main()
     map.root = map.walk = block_init();
 
     /* Initialize player */
-    player_t player = player_init(0, 0, "@");
+    player_t *player = player_init(0, 0, "@");
 
     /* Initialize screen */
     screen_init();
