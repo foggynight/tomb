@@ -14,7 +14,7 @@ player_t *player_init(int y_pos, int x_pos, const char *symbol)
 {
     player_t *new_player = malloc(sizeof(player_t));
     if (!new_player)
-        rtb_elog("player_init: calloc failed");
+        rtb_elog("player_init: malloc failed");
 
     new_player->pos.y = y_pos;
     new_player->pos.x = x_pos;
