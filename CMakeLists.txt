@@ -14,9 +14,9 @@ include_directories(inc
 
 add_executable(rogue-like
                src/block.c
+               src/entity.c
                src/main.c
                src/map.c
-               src/player.c
                src/screen.c)
 
 target_link_libraries(rogue-like ${CURSES_LIBRARIES})
