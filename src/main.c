@@ -15,7 +15,7 @@
 
 static void finish(int sig);
 
-int main()
+int main(void)
 {
     signal(SIGINT, finish);
     setlocale(LC_ALL, "en_US.UTF-8");
