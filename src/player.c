@@ -10,7 +10,7 @@
 
 #include "player.h"
 
-player_t *player_init(int y_pos, int x_pos, char *symbol)
+player_t *player_init(int y_pos, int x_pos, const char *symbol)
 {
     player_t *new_player = malloc(sizeof(player_t));
     if (!new_player)
@@ -18,7 +18,7 @@ player_t *player_init(int y_pos, int x_pos, char *symbol)
 
     new_player->pos.y = y_pos;
     new_player->pos.x = x_pos;
-    new_player->symbol = "@";
+    new_player->symbol = symbol;
 
     return new_player;
 }

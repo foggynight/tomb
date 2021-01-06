@@ -15,7 +15,7 @@ typedef struct player {
     char *symbol;
 } player_t;
 
-player_t *player_init(int y_pos, int x_pos, char *symbol);
+player_t *player_init(int y_pos, int x_pos, const char *symbol);
 
 #endif // PLAYER_H_
 
