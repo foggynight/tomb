@@ -10,14 +10,9 @@
 
 #include "block.h"
 #include "entity.h"
+#include "error.h"
 #include "map.h"
 #include "screen.h"
-
-/**
- * finish: Call exit function with argument sig.
- * @param sig Exit code to pass to exit function
- **/
-static void finish(int sig);
 
 int main(void)
 {
@@ -63,12 +58,6 @@ int main(void)
                           block_get_tile_index(player->pos.y, player->pos.x),
                           &source_tile);
     }
-}
-
-static void finish(int sig)
-{
-    screen_kill();
-    exit(sig);
 }
 
 /**

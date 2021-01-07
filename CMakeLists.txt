@@ -15,6 +15,7 @@ include_directories(inc
 add_executable(rogue-like
                src/block.c
                src/entity.c
+               src/error.c
                src/main.c
                src/map.c
                src/screen.c)
