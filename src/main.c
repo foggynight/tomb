@@ -24,12 +24,18 @@ int main(void)
     signal(SIGINT, finish);           // Call finish on interrupt signal
     setlocale(LC_ALL, "en_US.UTF-8"); // Enable UTF-8 support for C strings
 
+    /* Initialize source tile */
+    tile_t source_tile;
+    source_tile.symb = "@";
+
     /* Initialize player */
     entity_t *player = entity_init(0, 0, "@");
 
     /* Initialize map */
     map_t *map = map_init();
-    map->walk->tile_arr[player->pos.y*BLOCK_WIDTH+player->pos.x].symb = player->symb;
+    block_update_tile(map->walk,
+                      block_get_tile_index(player->pos.y, player->pos.x),
+                      &source_tile);
 
     /* Initialize screen */
     screen_init();
@@ -38,7 +44,10 @@ int main(void)
     for (;;) {
         int input = screen_step(map->walk->tile_arr);
 
-        map->walk->tile_arr[player->pos.y*BLOCK_WIDTH+player->pos.x].symb = "";
+        source_tile.symb = "";
+        block_update_tile(map->walk,
+                          block_get_tile_index(player->pos.y, player->pos.x),
+                          &source_tile);
 
         switch (input) {
             case 'w': entity_move(player, NORTH, 1); break;
@@ -47,7 +56,10 @@ int main(void)
             case 'a': entity_move(player, WEST, 1); break;
         }
 
-        map->walk->tile_arr[player->pos.y*BLOCK_WIDTH+player->pos.x].symb = player->symb;
+        source_tile.symb = "@";
+        block_update_tile(map->walk,
+                          block_get_tile_index(player->pos.y, player->pos.x),
+                          &source_tile);
     }
 }
 

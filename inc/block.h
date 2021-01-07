@@ -12,9 +12,12 @@
 #define BLOCK_HEIGHT 8 // Height of each block in cells
 #define BLOCK_WIDTH  8 // Width of each block in cells
 
+#define TILE_COUNT (BLOCK_HEIGHT*BLOCK_WIDTH) // Number of tiles per tile array
+
 /**
  * block_t: Block type containing pointers to neighboring blocks and an
  *          array of tiles representing tiles in the game world.
+ * @note The game view will always be composed of a single block.
  * @member neighbors Struct of pointers to neighboring blocks
  * @member tile_arr  Array of tiles, sized: BLOCK_HEIGHT*BLOCK_WIDTH
  **/
@@ -25,7 +28,7 @@ typedef struct block {
                      *below,
                      *left;
     } neighbors;
-    tile_t tile_arr[BLOCK_HEIGHT*BLOCK_WIDTH];
+    tile_t tile_arr[TILE_COUNT];
 } block_t;
 
 /**
@@ -38,11 +41,22 @@ block_t *block_init(void);
 /**
  * block_get_tile_index: Get the index of the tile at the position:
  *                       y_pos * BLOCK_WIDTH + x_pos
- * @param y_pos y position component
- * @param x_pos x position component
- * @return Index of the tile at the y-x position
+ * @param y_pos 'y' position component
+ * @param x_pos 'x' position component
+ * @return Index of the tile at the 'y-x' position
  **/
 int block_get_tile_index(int y_pos, int x_pos);
+
+/**
+ * block_update_tile: Update a tile in the tile array of a block.
+ * @note This is done by creating a tile and modifying its members, then
+ *       passing a pointer to that tile to this function, which copies
+ *       its members into the tile at index in the block's tile array.
+ * @param block  Block containing the target tile
+ * @param index  Index of the target tile
+ * @param source Source tile to copy members from
+ **/
+void block_update_tile(block_t *block, int index, tile_t *source);
 
 #endif // BLOCK_H_
 
