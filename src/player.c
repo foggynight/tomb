@@ -30,10 +30,22 @@ void player_update(entity_t *player, int input)
         ERROR("player_update: Invalid input");
 
     switch (input) {
-        case 'w': entity_move(player, NORTH, 1); break;
-        case 'd': entity_move(player, EAST, 1); break;
-        case 's': entity_move(player, SOUTH, 1); break;
-        case 'a': entity_move(player, WEST, 1); break;
+        case 'w':
+        case 'W':
+            entity_move(player, NORTH, 1);
+            break;
+        case 'd':
+        case 'D':
+            entity_move(player, EAST, 1);
+            break;
+        case 's':
+        case 'S':
+            entity_move(player, SOUTH, 1);
+            break;
+        case 'a':
+        case 'A':
+            entity_move(player, WEST, 1);
+            break;
     }
 }
 
