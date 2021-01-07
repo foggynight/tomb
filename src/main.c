@@ -26,13 +26,15 @@ int main(void)
 
     /* Initialize source tile */
     tile_t source_tile;
-    source_tile.symb = "@";
+
+    /* Initialize map */
+    map_t *map = map_init();
 
     /* Initialize player */
     entity_t *player = entity_init(0, 0, "@");
 
-    /* Initialize map */
-    map_t *map = map_init();
+    /* Add player to tile array */
+    source_tile.symb = "@";
     block_update_tile(map->walk,
                       block_get_tile_index(player->pos.y, player->pos.x),
                       &source_tile);
