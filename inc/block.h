@@ -26,6 +26,7 @@ typedef struct block {
 } block_t;
 
 block_t *block_init(void);
+int block_get_tile_index(int y_pos, int x_pos);
 
 #endif // BLOCK_H_
 

@@ -18,6 +18,11 @@ block_t *block_init(void)
     return new_block;
 }
 
+int block_get_tile_index(int y_pos, int x_pos)
+{
+    return y_pos * BLOCK_WIDTH + x_pos;
+}
+
 /**
  * Version History
  * 0.0.0 - 2021-01-05 - First commit
