@@ -10,8 +10,6 @@
 #ifndef TILE_H_
 #define TILE_H_
 
-#include <stddef.h>
-
 typedef struct tile {
     const char *symb; // Unicode symbol representing the tile
 } tile_t;
