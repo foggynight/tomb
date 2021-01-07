@@ -20,6 +20,10 @@ block_t *block_init(void)
 
 int block_get_tile_index(int y_pos, int x_pos)
 {
+    if ((y_pos < 0 || y_pos >= BLOCK_HEIGHT)
+     || (x_pos < 0 || x_pos >= BLOCK_WIDTH))
+        rtb_elogf("block_get_tile_index: Invalid %c position\n",
+                  (y_pos < 0 || y_pos >= BLOCK_HEIGHT) ? 'y' : 'x');
     return y_pos * BLOCK_WIDTH + x_pos;
 }
 
