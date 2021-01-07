@@ -18,4 +18,3 @@ void player_update(entity_t *player, int input);
  * Version History
  * 0.0.0 - 2021-01-07 - First commit
  **/
-

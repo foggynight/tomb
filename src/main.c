@@ -12,6 +12,7 @@
 #include "entity.h"
 #include "error.h"
 #include "map.h"
+#include "player.h"
 #include "screen.h"
 
 int main(void)
@@ -26,7 +27,7 @@ int main(void)
     map_t *map = map_init();
 
     /* Initialize player */
-    entity_t *player = entity_init(0, 0, "@");
+    entity_t *player = player_init();
 
     /* Add player to tile array */
     source_tile.symb = "@";
@@ -46,12 +47,7 @@ int main(void)
                           block_get_tile_index(player->pos.y, player->pos.x),
                           &source_tile);
 
-        switch (input) {
-            case 'w': entity_move(player, NORTH, 1); break;
-            case 'd': entity_move(player, EAST, 1); break;
-            case 's': entity_move(player, SOUTH, 1); break;
-            case 'a': entity_move(player, WEST, 1); break;
-        }
+        player_update(player, input);
 
         source_tile.symb = "@";
         block_update_tile(map->walk,

@@ -18,6 +18,7 @@ add_executable(rogue-like
                src/error.c
                src/main.c
                src/map.c
+               src/player.c
                src/screen.c)
 
 target_link_libraries(rogue-like ${CURSES_LIBRARIES})
