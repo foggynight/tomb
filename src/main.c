@@ -13,12 +13,16 @@
 #include "map.h"
 #include "screen.h"
 
+/**
+ * finish: Call exit function with argument sig.
+ * @param sig Exit code to pass to exit function
+ **/
 static void finish(int sig);
 
 int main(void)
 {
-    signal(SIGINT, finish);
-    setlocale(LC_ALL, "en_US.UTF-8");
+    signal(SIGINT, finish);           // Call finish on interrupt signal
+    setlocale(LC_ALL, "en_US.UTF-8"); // Enable UTF-8 support for C strings
 
     /* Initialize player */
     entity_t *player = entity_init(0, 0, "@");
