@@ -7,12 +7,13 @@
 #ifndef BLOCK_H_
 #define BLOCK_H_
 
+#include "entity.h"
 #include "tile.h"
 
-#define BLOCK_HEIGHT 8 // Height of each block in cells
-#define BLOCK_WIDTH  8 // Width of each block in cells
-
-#define TILE_COUNT (BLOCK_HEIGHT*BLOCK_WIDTH) // Number of tiles per tile array
+#define BLOCK_HEIGHT 8 // Height of each block in tiles
+#define BLOCK_WIDTH  8 // Width of each block in tiles
+#define TILE_COUNT (BLOCK_HEIGHT*BLOCK_WIDTH) // Number of tiles per block
+#define MAX_ENTITY_COUNT TILE_COUNT           // Max number of entities per block
 
 /**
  * block_t: Block type containing pointers to neighboring blocks and an
@@ -28,6 +29,7 @@ typedef struct block {
                      *below,
                      *left;
     } neighbors;
+    entity_t entity_arr[MAX_ENTITY_COUNT];
     tile_t tile_arr[TILE_COUNT];
 } block_t;
 
