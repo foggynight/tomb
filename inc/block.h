@@ -18,9 +18,12 @@
 /**
  * block_t: Block type containing pointers to neighboring blocks and an
  *          array of tiles representing tiles in the game world.
+ *
+ * @member neighbors  Struct of pointers to neighboring blocks
+ * @member entity_arr Array of entities
+ * @member tile_arr   Array of tiles
+ *
  * @note The game view will always be composed of a single block.
- * @member neighbors Struct of pointers to neighboring blocks
- * @member tile_arr  Array of tiles, sized: BLOCK_HEIGHT*BLOCK_WIDTH
  **/
 typedef struct block {
     struct {
@@ -35,30 +38,16 @@ typedef struct block {
 
 /**
  * block_init: Allocate and initialize a block.
- * @note Zeroes out the members of the block
  * @return Pointer to the new block
+ * @note Block members are initialized to zero
  **/
 block_t *block_init(void);
 
 /**
- * block_get_tile_index: Get the index of the tile at the position:
- *                       y_pos * BLOCK_WIDTH + x_pos
- * @param y_pos 'y' position component
- * @param x_pos 'x' position component
- * @return Index of the tile at the 'y-x' position
+ * block_update: Update a block's tile array based on its entity array.
+ * @param block Target block to update
  **/
-int block_get_tile_index(int y_pos, int x_pos);
-
-/**
- * block_update_tile: Update a tile in the tile array of a block.
- * @note This is done by creating a tile and modifying its members, then
- *       passing a pointer to that tile to this function, which copies
- *       its members into the tile at index in the block's tile array.
- * @param block  Block containing the target tile
- * @param index  Index of the target tile
- * @param source Source tile to copy members from
- **/
-void block_update_tile(block_t *block, int index, tile_t *source);
+void block_update(block_t *block);
 
 #endif // BLOCK_H_
 
