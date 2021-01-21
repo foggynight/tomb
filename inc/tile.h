@@ -16,8 +16,3 @@ typedef struct tile {
 } tile_t;
 
 #endif // TILE_H_
-
-/**
- * Version History
- * 0.0.0 - 2021-01-03 - First commit
- **/

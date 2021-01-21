@@ -28,8 +28,3 @@ extern char *error_message;
 void finish(int sig);
 
 #endif // ERROR_H_
-
-/**
- * Version History
- * 0.0.0 - 2021-01-07 - First commit
- **/

@@ -48,8 +48,3 @@ void player_update(entity_t *player, int input)
             break;
     }
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-07 - First commit
- **/

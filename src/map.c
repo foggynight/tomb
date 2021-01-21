@@ -20,8 +20,3 @@ map_t *map_init(void)
 
     return new_map;
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-05 - First commit
- **/

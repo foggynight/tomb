@@ -50,8 +50,3 @@ block_t *block_init(void);
 void block_update(block_t *block);
 
 #endif // BLOCK_H_
-
-/**
- * Version History
- * 0.0.0 - 2021-01-03 - First commit
- **/

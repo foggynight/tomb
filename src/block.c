@@ -63,8 +63,3 @@ static void update_tile(block_t *block, int index, tile_t *source)
 
     block->tile_arr[index] = *source;
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-05 - First commit
- **/

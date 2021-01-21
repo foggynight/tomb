@@ -45,8 +45,3 @@ void entity_move(entity_t *targ, enum cardinal_direction dir, int mag)
         } break;
     }
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-06 - First commit
- **/

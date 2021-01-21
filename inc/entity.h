@@ -49,8 +49,3 @@ entity_t *entity_init(int y_pos, int x_pos, const char *symb);
 void entity_move(entity_t *targ, enum cardinal_direction dir, int mag);
 
 #endif // ENTITY_H_
-
-/**
- * Version History
- * 0.0.0 - 2021-01-06 - First commit
- **/

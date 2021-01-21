@@ -14,8 +14,3 @@ int screen_step(tile_t tile_arr[]);
 void screen_kill(void);
 
 #endif // SCREEN_H_
-
-/**
- * Version History
- * 0.0.0 - 2021-01-03 - First commit
- **/

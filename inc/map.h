@@ -18,8 +18,3 @@ typedef struct map {
 map_t *map_init(void);
 
 #endif // MAP_H_
-
-/**
- * Version History
- * 0.0.0 - 2021-01-03 - First commit
- **/

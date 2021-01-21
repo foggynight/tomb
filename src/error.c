@@ -19,8 +19,3 @@ void finish(int sig)
         fprintf(stderr, "Error: %s\n", error_message);
     exit(sig);
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-07 - First commit
- **/

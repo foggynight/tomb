@@ -33,8 +33,3 @@ void screen_kill(void)
 {
     endwin();
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-03 - First commit
- **/

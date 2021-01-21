@@ -55,8 +55,3 @@ int main(void)
                           &source_tile);
     }
 }
-
-/**
- * Version History
- * 0.0.0 - 2021-01-03 - First commit
- **/
