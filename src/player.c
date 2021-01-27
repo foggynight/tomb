@@ -1,5 +1,5 @@
 /**
- * player.c - v0.0.0
+ * player.c
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/

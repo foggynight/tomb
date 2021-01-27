@@ -1,8 +1,5 @@
 /**
- * entity.c - v0.0.0
- *
- * Function definitions associated with the entity_t type.
- *
+ * entity.c
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/

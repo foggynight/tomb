@@ -1,8 +1,5 @@
 /**
- * entity.h - v0.0.0
- *
- * Declarations of entity_t and associated functions.
- *
+ * entity.h
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/

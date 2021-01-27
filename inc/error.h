@@ -1,5 +1,5 @@
 /**
- * error.h - v0.0.0
+ * error.h
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/

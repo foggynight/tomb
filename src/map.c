@@ -1,5 +1,5 @@
 /**
- * map.c - v0.0.0
+ * map.c
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/

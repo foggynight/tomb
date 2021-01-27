@@ -1,8 +1,5 @@
 /**
- * map.h - v0.0.0
- *
- * Map type representing the game map.
- *
+ * map.h
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/

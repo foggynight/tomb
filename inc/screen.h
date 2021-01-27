@@ -1,5 +1,5 @@
 /**
- * screen.h - v0.0.0
+ * screen.h
  * Copyright (C) 2021 Robert Coffey
  * Released under the GPLv2 license
  **/
