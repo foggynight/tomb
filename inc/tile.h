@@ -6,6 +6,7 @@
 
 #ifndef TILE_H_
 #define TILE_H_
+
 /**
  * tile_t: Tile type representing a tile in the game world.
  * @member symb Unicode symbol used to represent the tile on screen
