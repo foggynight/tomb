@@ -1,9 +1,4 @@
-# rogue-like
-
-Get lost in a procedurally generated forest.
-
-As the title suggests, *rogue-like* is an ascii game inspired by the classic
-dungeon crawler *rogue*.
+# tomb
 
 ## License
 
