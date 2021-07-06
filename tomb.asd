@@ -7,4 +7,6 @@
     :components
     ((:file "package")
 
-     (:file "main")))
+     (:file "level")
+     (:file "main")
+     (:file "screen")))
