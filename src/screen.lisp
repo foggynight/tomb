@@ -2,12 +2,11 @@
 
 (require :croatoan)
 
-(defun get-char (sym)
-  (case sym
-    ('nil #\.)))
-
 (defun draw-level (win level)
   (crt:clear win)
-  (dotimes (row-index (array-dimension level 0))
-    (dotimes (cell-index (array-dimension level 1))
-      (crt:add win (get-char (aref level row-index cell-index))))))
+  (let* ((tiles (get-tiles level))
+         (row-width (array-dimension tiles 1)))
+    (dotimes (row-index (array-dimension tiles 0))
+      (dotimes (cell-index row-width)
+        (crt:add win (get-char (aref tiles row-index cell-index)))
+        (crt:move win 1 (- row-width) :relative t)))))
