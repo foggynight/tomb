@@ -9,4 +9,6 @@
 
      (:file "level")
      (:file "main")
-     (:file "screen")))
+     (:file "screen")
+     (:file "tile")
+     (:file "world")))
