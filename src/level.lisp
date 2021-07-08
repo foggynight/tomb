@@ -26,6 +26,9 @@
                          collect (make-tile :tile-char char))))
     (make-array (length tile-list) :initial-contents tile-list)))
 
+;; TODO Remove constraint: strings must be of same length. I think I will go
+;; about this by padding the ends of shorter strings with spaces to the length
+;; of the longest string before converting the list of strings to an array.
 (defun string-list-to-tile-array2 (string-list)
   "Convert a list of strings into a 2D array of tiles, strings must all be the
 same length, returns nil when string-list is empty."
