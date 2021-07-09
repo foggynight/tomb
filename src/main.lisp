@@ -10,7 +10,7 @@
     (crt:with-screen (scr :cursor-visible nil
                           :input-echoing nil
                           :process-control-chars nil)
-      (crt:with-window (win :dimensions '(16 32)
+      (crt:with-window (win :dimensions '(24 80)
                             :position '(0 0))
         (draw-level win level)
         (crt:refresh win)
