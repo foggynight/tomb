@@ -30,3 +30,8 @@
                             (crt:refresh win)))
 
         (crt:run-event-loop win)))))
+
+;; This is temporary, allows the program to be compiled and the main function
+;; executed directly on load, removing the need to execute the main function
+;; after executing the quickload.sh script (which is also temporary).
+(main)
