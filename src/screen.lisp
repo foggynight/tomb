@@ -15,4 +15,6 @@
   (let ((entities (get-entities level)))
     (dolist (entity entities)
       (crt:add win (sym entity) :y (y entity)
-                                :x (x entity)))))
+                                :x (x entity))))
+
+  (crt:refresh win))

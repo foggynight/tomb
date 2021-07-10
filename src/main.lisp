@@ -11,23 +11,28 @@
                           :process-control-chars nil)
       (crt:with-window (win :dimensions '(24 80)
                             :position '(0 0))
-        (draw-level win level)
-        (crt:refresh win)
-
         (crt:bind win #\ 'crt:exit-event-loop)
-
-        (crt:bind win #\n (lambda (w e)
-                            (declare (ignore w e))
-                            (setq level (move-to-next-level world player))
-                            (draw-level win level)
-                            (crt:refresh win)))
-
-        (crt:bind win #\p (lambda (w e)
-                            (declare (ignore w e))
-                            (setq level (move-to-previous-level world player))
-                            (draw-level win level)
-                            (crt:refresh win)))
-
+        (macrolet ((bind (key direction)
+                     `(crt:bind win ,key
+                                (lambda (w e)
+                                  (declare (ignore w e))
+                                  (attempt-move player ,direction)
+                                  (draw-level win level)))))
+          (bind #\h :left)
+          (bind #\j :down)
+          (bind #\k :up)
+          (bind #\l :right))
+        (crt:bind win #\n
+                  (lambda (w e)
+                    (declare (ignore w e))
+                    (setq level (move-to-next-level world player))
+                    (draw-level win level)))
+        (crt:bind win #\p
+                  (lambda (w e)
+                    (declare (ignore w e))
+                    (setq level (move-to-previous-level world player))
+                    (draw-level win level)))
+        (draw-level win level)
         (crt:run-event-loop win)))))
 
 ;; This is temporary, allows the program to be compiled and the main function

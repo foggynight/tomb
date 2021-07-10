@@ -39,6 +39,25 @@ cells to move the cursor; the default is one."
       (setf (y obj) (+ (y obj) (car offset)))
       (setf (x obj) (+ (x obj) (cadr offset))))))
 
+(defmethod attempt-move ((obj entity) direction &optional (n 1))
+  "Attempt to move an entity using the move method.
+
+If the entity is unable to move as directed, it will not be moved and this
+function returns nil, otherwise it is moved and this function returns t."
+  (flet ((multiply (x) (* n x)))
+    (let* ((y (y obj))
+           (x (x obj))
+           (dir (crt:get-direction direction))
+           (offset (if (> n 1)
+                       (mapcar #'multiply dir)
+                       dir)))
+      (cond ((or (< (+ y (car offset)) 0)
+                 (< (+ x (cadr offset)) 0))
+             nil)
+            ((>= (+ y (car offset)) 24) nil)
+            ((>= (+ x (cadr offset)) 80) nil)
+            (t (move obj direction n))))))
+
 (defclass player (entity)
   ()
   (:documentation
