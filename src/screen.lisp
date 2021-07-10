@@ -1,7 +1,5 @@
 (in-package :tomb)
 
-(require :croatoan)
-
 (defun draw-level (win level)
   (crt:clear win)
   (let* ((tiles (get-tiles level))

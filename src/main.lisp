@@ -1,7 +1,5 @@
 (in-package :tomb)
 
-(require :croatoan)
-
 (defun main ()
   (let* ((world (generate-world '("res/test-0.lvl"
                                   "res/test-1.lvl"
