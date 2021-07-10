@@ -2,7 +2,7 @@
 
 (defun make-world ()
   "Make a new world."
-  (list nil 0))
+  (list nil -1))
 
 (defun get-levels (world)
   "Get the levels contained within a world."
@@ -11,6 +11,23 @@
 (defun set-levels (world levels)
   "Set the levels contained within a world."
   (setf (car world) levels))
+
+(defun get-current-level-index (world)
+  "Get the current level index of a world."
+  (cadr world))
+
+(defun set-current-level-index (world index)
+  "Set the current level index of a world."
+  (setf (cadr world) index))
+
+(defun generate-world (filenames)
+  "Generate a world containing levels which are each constructed using a file
+named in the list of filenames passed as an argument to this function."
+  (let ((world (make-world))
+        (level-list (loop for filename in filenames
+                          collect (read-level-from-file filename))))
+    (set-levels world level-list)
+    world))
 
 (defun get-level-count (world)
   "Get the number of levels contained within a world."
@@ -24,23 +41,38 @@
   "Get the current level of a world."
   (get-level-n world (cadr world)))
 
-(defmacro move-to-next-level (world)
-  "Move a world onto its next level (wrapping around the end of the list of
-levels), and return the new current level."
-  `(progn (setf (cadr ,world) (mod (1+ (cadr ,world)) (get-level-count ,world)))
-          (get-current-level ,world)))
+(defun cons-entity (entity level)
+  "Cons an entity to the front of the entity list of a level."
+  (set-entities level (cons entity (get-entities level))))
 
-(defmacro move-to-previous-level (world)
-  "Move a world back to its previous level (wrapping around the beginning of the
-list of levels), and return the new current level."
-  `(progn (setf (cadr ,world) (mod (1- (cadr ,world)) (get-level-count ,world)))
-          (get-current-level ,world)))
+(defun remove-entity (entity level &optional (n 1))
+  "Remove first n entities equal to the entity argument from the entity list of
+a level."
+  (set-entities level (remove entity (get-entities level) :count n)))
 
-(defun generate-world (filenames)
-  "Generate a world containing levels which are each constructed using a file
-named in the list of filenames passed as an argument to this function."
-  (let ((world (make-world))
-        (level-list (loop for filename in filenames
-                          collect (read-level-from-file filename))))
-    (set-levels world level-list)
-    world))
+(defun move-to-first-level (world player)
+  "Move a player to the first level contained within a world.
+
+This function does not remove the player from the current level before switching
+levels, thus it should only be called at the start of the program."
+  (cons-entity player (car (get-levels world)))
+  (set-current-level-index world 0)
+  (get-current-level world))
+
+(defun move-to-next-level (world player)
+  "Move a player to the next level contained within a world, wraps around the
+end of the list of worlds, returns the new current level."
+  (remove-entity player (get-current-level world))
+  (set-current-level-index world (mod (1+ (get-current-level-index world))
+                                      (get-level-count world)))
+  (cons-entity player (get-current-level world))
+  (get-current-level world))
+
+(defun move-to-previous-level (world player)
+  "Move a player to the previous level contained within a world, wraps around
+the beginning of the list of worlds, returns the new current level."
+  (remove-entity player (get-current-level world))
+  (set-current-level-index world (mod (1- (get-current-level-index world))
+                                      (get-level-count world)))
+  (cons-entity player (get-current-level world))
+  (get-current-level world))
