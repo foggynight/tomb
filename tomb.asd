@@ -7,6 +7,8 @@
   :serial t
   :components ((:file "package")
 
+               (:file "entity")
+
                (:file "tile")
                (:file "level")
                (:file "world")
