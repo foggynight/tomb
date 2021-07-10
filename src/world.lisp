@@ -55,8 +55,8 @@ a level."
 
 This function does not remove the player from the current level before switching
 levels, thus it should only be called at the start of the program."
-  (cons-entity player (car (get-levels world)))
   (set-current-level-index world 0)
+  (cons-entity player (get-current-level world))
   (get-current-level world))
 
 (defun move-to-next-level (world player)
