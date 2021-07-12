@@ -43,7 +43,7 @@ cells to move the cursor; the default is one."
   "Attempt to move an entity using the move method.
 
 If the entity is unable to move as directed, it will not be moved and this
-function returns nil, otherwise it is moved and this function returns t."
+function returns nil, otherwise it is moved and this function returns non-nil."
   (flet ((multiply (x) (* n x)))
     (let* ((y (y obj))
            (x (x obj))
