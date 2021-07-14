@@ -61,7 +61,7 @@ function returns nil, otherwise it is moved and this function returns non-nil."
 (defclass player (entity)
   ()
   (:documentation
-   "Player class representing the player's character in a level, player is a
+   "Player class representing the player's character in the world, player is a
 child class of entity."))
 
 (defun make-player (&key (y 0) (x 0) (sym #\@))
@@ -71,5 +71,5 @@ child class of entity."))
 (defclass enemy (entity)
   ()
   (:documentation
-   "Enemy class representing each of the enemies in a level, enemy is a child
+   "Enemy class representing each of the enemies in the world, enemy is a child
 class of entity."))
