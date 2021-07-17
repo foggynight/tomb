@@ -1,10 +1,10 @@
 (in-package :tomb)
 
 (defun main ()
-  (let* ((player (make-player))
-         (world (generate-world '("res/test-0.lvl"
+  (let* ((world (generate-world '("res/test-0.lvl"
                                   "res/test-1.lvl"
                                   "res/test-2.lvl")))
+         (player (make-player))
          (level (move-to-first-level world player)))
     (crt:with-screen (scr :cursor-visible nil
                           :input-echoing nil

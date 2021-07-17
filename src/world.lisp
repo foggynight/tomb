@@ -1,5 +1,7 @@
 (in-package :tomb)
 
+;; TODO Use a struct instead of a list to represent worlds
+
 (defun make-world ()
   "Make a new world."
   (list nil -1))
@@ -43,12 +45,12 @@ named in the list of filenames passed as an argument to this function."
 
 (defun cons-entity (entity level)
   "Cons an entity to the front of the entity list of a level."
-  (set-entities level (cons entity (get-entities level))))
+  (setf (level-entities level) (cons entity (level-entities level))))
 
 (defun remove-entity (entity level &optional (n 1))
   "Remove first n entities equal to the entity argument from the entity list of
 a level."
-  (set-entities level (remove entity (get-entities level) :count n)))
+  (setf (level-entities level) (remove entity (level-entities level) :count n)))
 
 (defun move-to-first-level (world player)
   "Move a player to the first level contained within a world.

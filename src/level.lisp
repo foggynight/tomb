@@ -1,29 +1,13 @@
 (in-package :tomb)
 
-(defun make-level ()
-  "Make a new level."
-  (list nil nil))
-
-(defun get-tiles (level)
-  "Get the tiles composing a level."
-  (car level))
-
-(defun set-tiles (level tiles)
-  "Set the tiles composing a level."
-  (setf (car level) tiles))
-
-(defun get-entities (level)
-  "Get the entities contained within a level."
-  (cadr level))
-
-(defun set-entities (level entities)
-  "Set the entities contained within a level."
-  (setf (cadr level) entities))
+(defstruct level
+  tiles      ;; Grid of tiles which compose the level
+  entities)  ;; List of entities contained within the level
 
 (defun string-to-tile-vector (string)
   "Convert a string to a vector of tiles."
   (let ((tile-list (loop for char across string
-                         collect (make-tile :tile-char char))))
+                         collect (make-tile :symbol char))))
     (make-array (length tile-list) :initial-contents tile-list)))
 
 ;; TODO Remove constraint: strings must be of same length. I think I will go
@@ -52,6 +36,4 @@ same length, returns nil when string-list is empty."
 
 (defun read-level-from-file (filename)
   "Make a level using the contents of the named file."
-  (let ((level (make-level)))
-    (set-tiles level (read-tiles-from-file filename))
-    level))
+  (make-level :tiles (read-tiles-from-file filename)))
