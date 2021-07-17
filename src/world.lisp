@@ -1,10 +1,12 @@
 (in-package :tomb)
 
 (defstruct world
-  "World structure representing the game world. Contains a list of levels, as
-well the index of the level currently containing the player."
-  levels                ; List of levels which compose the world
-  current-level-index)  ; Index of the level currently containing the player
+  "World structure representing a game world divided into levels.
+
+Worlds contain a list of levels, as well the index of the level currently
+containing the player."
+  levels
+  current-level-index)
 
 (defun generate-world (filenames)
   "Generate a world containing levels which are each constructed using a file

@@ -1,8 +1,12 @@
 (in-package :tomb)
 
 (defstruct level
-  tiles      ; Grid of tiles which compose the level
-  entities)  ; List of entities contained within the level
+  "Level structure representing a level in a world.
+
+Levels contain a grid of tiles which compose the space contained within the
+level, and a list of entities which occupy tiles in the level."
+  tiles
+  entities)
 
 (defun string-to-tile-vector (string)
   "Convert a string to a vector of tiles."
