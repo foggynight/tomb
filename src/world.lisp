@@ -1,6 +1,6 @@
 (in-package :tomb)
 
-;; TODO Use a struct instead of a list to represent worlds
+;;; TODO Use a struct instead of a list to represent worlds
 
 (defun make-world ()
   "Make a new world."
