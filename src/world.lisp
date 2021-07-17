@@ -29,15 +29,6 @@ named in the list of filenames passed as an argument to this function."
   "Get the current level of a world."
   (world-level-n world (world-current-level-index world)))
 
-(defun cons-entity (entity level)
-  "Cons an entity to the front of the entity list of a level."
-  (setf (level-entities level) (cons entity (level-entities level))))
-
-(defun remove-entity (entity level &optional (n 1))
-  "Remove first n entities equal to the entity argument from the entity list of
-a level."
-  (setf (level-entities level) (remove entity (level-entities level) :count n)))
-
 (defun move-to-first-level (world player)
   "Move a player to the first level contained within a world, returns the new
 current level.
@@ -45,7 +36,7 @@ current level.
 This function does not remove the player from the current level before switching
 levels, thus it should only be called at the start of the program."
   (setf (world-current-level-index world) 0)
-  (cons-entity player (world-current-level world))
+  (add-entity player (world-current-level world))
   (world-current-level world))
 
 (defun move-to-next-level (world player)
@@ -55,7 +46,7 @@ end of the list of worlds, returns the new current level."
   (setf (world-current-level-index world)
         (mod (1+ (get-current-level-index world))
              (get-level-count world)))
-  (cons-entity player (world-current-level world))
+  (add-entity player (world-current-level world))
   (world-current-level world))
 
 (defun move-to-previous-level (world player)
@@ -65,5 +56,5 @@ the beginning of the list of worlds, returns the new current level."
   (setf (world-current-level-index world)
         (mod (1- (get-current-level-index world))
              (get-level-count world)))
-  (cons-entity player (world-current-level world))
+  (add-entity player (world-current-level world))
   (world-current-level world))
