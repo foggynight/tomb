@@ -39,24 +39,20 @@ cells to move the cursor; the default is one."
       (setf (entity-y obj) (+ (entity-y obj) (car offset)))
       (setf (entity-x obj) (+ (entity-x obj) (cadr offset))))))
 
-(defmethod attempt-move ((obj entity) direction &optional (n 1))
+(defmethod attempt-move ((obj entity) level direction &optional (n 1))
   "Attempt to move an entity using the move method.
 
 If the entity is unable to move as directed, it will not be moved and this
 function returns nil, otherwise it is moved and this function returns non-nil."
   (flet ((multiply (x) (* n x)))
-    (let* ((y (entity-y obj))
-           (x (entity-x obj))
-           (dir (crt:get-direction direction))
+    (let* ((dir (crt:get-direction direction))
            (offset (if (> n 1)
                        (mapcar #'multiply dir)
-                       dir)))
-      (cond ((or (< (+ y (car offset)) 0)
-                 (< (+ x (cadr offset)) 0))
-             nil)
-            ((>= (+ y (car offset)) 24) nil)
-            ((>= (+ x (cadr offset)) 80) nil)
-            (t (move obj direction n))))))
+                       dir))
+           (target-pos (list (+ (entity-y obj) (car offset))
+                             (+ (entity-x obj) (cadr offset)))))
+      (unless (position-out-of-bounds-p level (car target-pos) (cadr target-pos))
+        (move obj direction n)))))
 
 (defclass player (entity)
   ()

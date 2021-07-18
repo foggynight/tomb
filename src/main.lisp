@@ -16,7 +16,7 @@
                      `(crt:bind win ,key
                                 (lambda (w e)
                                   (declare (ignore w e))
-                                  (attempt-move player ,direction)
+                                  (attempt-move player level ,direction)
                                   (draw-level win level)))))
           (bind #\h :left)
           (bind #\j :down)

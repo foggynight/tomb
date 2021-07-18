@@ -28,3 +28,10 @@ level, and a list of entities which occupy tiles in the level."
   "Remove the first entity from the list of entities of a level which is equal
 to the entity argument."
   (setf (level-entities level) (remove entity (level-entities level) :count 1)))
+
+(defun position-out-of-bounds-p (level y x)
+  "Determine if a position is out of bounds of a level's tile grid."
+  (or (< y 0)
+      (< x 0)
+      (>= y (array-dimension (level-tiles level) 0))
+      (>= x (array-dimension (level-tiles level) 1))))
