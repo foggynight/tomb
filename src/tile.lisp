@@ -7,7 +7,7 @@ occupy.
 
 Tiles have a position which is inferred from their position in their containing
 data structure, a symbol used to represent the tile on-screen, and attributes
-which determine how the tile interacts with entities in a world."
+which determine how the tile interacts with objects in a world."
   symbol)
 
 (defun string-to-tile-vector (string)
