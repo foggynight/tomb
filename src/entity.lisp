@@ -64,9 +64,9 @@ function returns nil, otherwise it is moved and this function returns non-nil."
    "Player class representing the player's character in the world, player is a
 child class of entity."))
 
-(defun make-player (&key (y 0) (x 0) (sym #\@))
+(defun make-player (&key (y 0) (x 0) (symbol #\@))
   "Make a new player."
-  (make-instance 'player :y y :x x :sym sym))
+  (make-instance 'player :y y :x x :symbol symbol))
 
 (defclass enemy (entity)
   ()
