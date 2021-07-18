@@ -44,8 +44,8 @@ levels, thus it should only be called at the start of the program."
 end of the list of worlds, returns the new current level."
   (remove-entity player (world-current-level world))
   (setf (world-current-level-index world)
-        (mod (1+ (get-current-level-index world))
-             (get-level-count world)))
+        (mod (1+ (world-current-level-index world))
+             (world-level-count world)))
   (add-entity player (world-current-level world))
   (world-current-level world))
 
@@ -54,7 +54,7 @@ end of the list of worlds, returns the new current level."
 the beginning of the list of worlds, returns the new current level."
   (remove-entity player (world-current-level world))
   (setf (world-current-level-index world)
-        (mod (1- (get-current-level-index world))
-             (get-level-count world)))
+        (mod (1- (world-current-level-index world))
+             (world-level-count world)))
   (add-entity player (world-current-level world))
   (world-current-level world))
