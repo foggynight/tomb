@@ -19,7 +19,7 @@ contains this entity.")
     :initarg :symbol
     :initform #\space
     :documentation
-    "Symbol used to represent the entity on-screen."))
+    "Symbol used to represent this entity on-screen."))
   (:documentation
    "Entity class representing a being in the world that can move and collides
 with objects in the world.
