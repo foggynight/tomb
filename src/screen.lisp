@@ -14,7 +14,7 @@
   ;; Draw entities
   (let ((entities (level-entities level)))
     (dolist (entity entities)
-      (crt:add win (sym entity) :y (y entity)
-                                :x (x entity))))
+      (crt:add win (entity-symbol entity) :y (entity-y entity)
+                                          :x (entity-x entity))))
 
   (crt:refresh win))

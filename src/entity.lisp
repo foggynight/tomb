@@ -2,21 +2,21 @@
 
 (defclass entity ()
   ((y
-    :accessor y
+    :accessor entity-y
     :initarg :y
     :initform 0
     :documentation
     "y position of this entity -- index of the row which contains this entity.")
    (x
-    :accessor x
+    :accessor entity-x
     :initarg :x
     :initform 0
     :documentation
     "x position of this entity -- index of the cell in its containing row which
 contains this entity.")
-   (sym
-    :accessor sym
-    :initarg :sym
+   (symbol
+    :accessor entity-symbol
+    :initarg :symbol
     :initform #\space
     :documentation
     "Symbol used to represent the entity on-screen."))
@@ -36,8 +36,8 @@ cells to move the cursor; the default is one."
            (offset (if (> n 1)
                        (mapcar #'multiply dir)
                        dir)))
-      (setf (y obj) (+ (y obj) (car offset)))
-      (setf (x obj) (+ (x obj) (cadr offset))))))
+      (setf (entity-y obj) (+ (entity-y obj) (car offset)))
+      (setf (entity-x obj) (+ (entity-x obj) (cadr offset))))))
 
 (defmethod attempt-move ((obj entity) direction &optional (n 1))
   "Attempt to move an entity using the move method.
@@ -45,8 +45,8 @@ cells to move the cursor; the default is one."
 If the entity is unable to move as directed, it will not be moved and this
 function returns nil, otherwise it is moved and this function returns non-nil."
   (flet ((multiply (x) (* n x)))
-    (let* ((y (y obj))
-           (x (x obj))
+    (let* ((y (entity-y obj))
+           (x (entity-x obj))
            (dir (crt:get-direction direction))
            (offset (if (> n 1)
                        (mapcar #'multiply dir)
