@@ -31,3 +31,11 @@ same length, returns nil when string-list is empty."
         (make-array (list (length vector-list)
                           (length (car vector-list)))
                     :initial-contents (reverse vector-list)))))
+
+(defun read-tiles-from-file (filename)
+  "Convert the contents of a file into a 2D array of tiles."
+  (with-open-file (stream filename :if-does-not-exist nil)
+    (let ((string-list (loop for line = (read-line stream nil)
+                             while line
+                             collect line)))
+      (string-list-to-tile-array2 string-list))))

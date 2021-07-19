@@ -8,14 +8,6 @@ level, and a list of entities which occupy tiles in the level."
   tiles
   entities)
 
-(defun read-tiles-from-file (filename)
-  "Convert the contents of a file into a 2D array of tiles."
-  (with-open-file (stream filename :if-does-not-exist nil)
-    (let ((string-list (loop for line = (read-line stream nil)
-                             while line
-                             collect line)))
-      (string-list-to-tile-array2 string-list))))
-
 (defun read-level-from-file (filename)
   "Make a level using the contents of the named file."
   (make-level :tiles (read-tiles-from-file filename)))
