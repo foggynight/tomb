@@ -26,33 +26,32 @@ with objects in the world.
 
 This is the base class for the various entity types in the game."))
 
-(defmethod move ((obj entity) direction &optional (n 1))
-  "Move an entity in the direction specified by the direction keyword.
+(defmethod move ((obj entity) direction)
+  "Move an entity in the direction specified by the direction keyword."
+  (let* ((dir (crt:get-direction direction)))
+    (setf (entity-y obj) (+ (entity-y obj) (car dir)))
+    (setf (entity-x obj) (+ (entity-x obj) (cadr dir)))))
 
-Optionally, an argument may be passed for n, which represents the number of
-cells to move the cursor; the default is one."
-  (flet ((multiply (x) (* n x)))
-    (let* ((dir (crt:get-direction direction))
-           (offset (if (> n 1)
-                       (mapcar #'multiply dir)
-                       dir)))
-      (setf (entity-y obj) (+ (entity-y obj) (car offset)))
-      (setf (entity-x obj) (+ (entity-x obj) (cadr offset))))))
+(defmethod attack ((obj entity) (target entity))
+  "Direct an entity to attack another entity."
 
-(defmethod attempt-move ((obj entity) level direction &optional (n 1))
-  "Attempt to move an entity using the move method.
+  )
 
-If the entity is unable to move as directed, it will not be moved and this
-function returns nil, otherwise it is moved and this function returns non-nil."
-  (flet ((multiply (x) (* n x)))
-    (let* ((dir (crt:get-direction direction))
-           (offset (if (> n 1)
-                       (mapcar #'multiply dir)
-                       dir))
-           (target-pos (list (+ (entity-y obj) (car offset))
-                             (+ (entity-x obj) (cadr offset)))))
-      (unless (position-out-of-bounds-p level (car target-pos) (cadr target-pos))
-        (move obj direction n)))))
+(defmethod attempt-move ((obj entity) level direction)
+  "Attempt to move an entity using the following logic:
+- Should the target position be invalid, do nothing
+- Should the target position be obstructed, do nothing
+- Should the target position contain another entity, attack it
+- Otherwise, move to the target position"
+  (let* ((dir (crt:get-direction direction))
+         (y (+ (entity-y obj) (car dir)))
+         (x (+ (entity-x obj) (cadr dir)))
+         (target-entity (get-entity level y x)))
+    (unless (or (position-out-of-bounds-p level y x)
+                (not (tile-can-be-moved-to level y x)))
+      (if target-entity
+          (attack obj target-entity)
+          (move obj direction)))))
 
 (defclass player (entity)
   ()
