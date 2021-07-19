@@ -38,20 +38,18 @@ This is the base class for the various entity types in the game."))
   )
 
 (defmethod attempt-move ((obj entity) level direction)
-  "Attempt to move an entity using the following logic:
-- Should the target position be invalid, do nothing
-- Should the target position be obstructed, do nothing
-- Should the target position contain another entity, attack it
-- Otherwise, move to the target position"
+  "Attempt to move an entity. If the target position can be moved to, check if
+it contains another entity and attack the entity if so, otherwise move to the
+target position."
   (let* ((dir (crt:get-direction direction))
          (y (+ (entity-y obj) (car dir)))
-         (x (+ (entity-x obj) (cadr dir)))
-         (target-entity (get-entity level y x)))
+         (x (+ (entity-x obj) (cadr dir))))
     (unless (or (position-out-of-bounds-p level y x)
                 (not (tile-can-be-moved-to level y x)))
-      (if target-entity
-          (attack obj target-entity)
-          (move obj direction)))))
+      (let ((target-entity (get-entity level y x)))
+        (if target-entity
+            (attack obj target-entity)
+            (move obj direction))))))
 
 (defclass player (entity)
   ()
