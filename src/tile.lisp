@@ -4,7 +4,7 @@
   '((#\#     . wall)
     (#\.     . floor)
     (#\space . void))
-  "Association list of tile symbol and type pairs.")
+  "Alist of tile symbol and type pairs.")
 
 (defstruct tile
   "Tile structure representing a tile in a world; tiles are a single cell of
