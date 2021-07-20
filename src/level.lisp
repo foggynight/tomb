@@ -47,7 +47,7 @@ has a wall."
   nil
   )
 
-(defun tile-can-be-moved-to (level y x)
+(defun tile-can-be-moved-to-p (level y x)
   "Determine if the tile at the y-x position in the tile grid of a level can be
 moved to by an entity.
 

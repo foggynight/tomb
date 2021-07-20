@@ -45,7 +45,7 @@ target position."
          (y (+ (entity-y obj) (car dir)))
          (x (+ (entity-x obj) (cadr dir))))
     (unless (or (position-out-of-bounds-p level y x)
-                (not (tile-can-be-moved-to level y x)))
+                (not (tile-can-be-moved-to-p level y x)))
       (let ((target-entity (get-entity level y x)))
         (if target-entity
             (attack obj target-entity)
