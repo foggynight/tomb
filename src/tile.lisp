@@ -11,7 +11,7 @@ which determine how the tile interacts with objects in a world."
   symbol)
 
 (defun string-to-tile-vector (string)
-  "Convert a string to a vector of tiles."
+  "Convert a string into a vector of tiles."
   (let ((tile-list (loop for char across string
                          collect (make-tile :symbol char))))
     (make-array (length tile-list) :initial-contents tile-list)))
