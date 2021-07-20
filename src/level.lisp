@@ -12,6 +12,9 @@ level, and a list of entities which occupy tiles in the level."
   "Make a level using the contents of the named file."
   (make-level :tiles (read-tiles-from-file filename)))
 
+(defun get-tile (level y x)
+  (aref (level-tiles level) y x))
+
 (defun add-entity (entity level)
   "Add an entity to the front of the entity list of a level."
   (setf (level-entities level) (cons entity (level-entities level))))
@@ -35,22 +38,8 @@ returns nil if no entity is found."
       (>= y (array-dimension (level-tiles level) 0))
       (>= x (array-dimension (level-tiles level) 1))))
 
-(defun tile-has-floor-p (level y x)
-  "Determine if the tile at the y-x position in the tile grid of a level
-has a floor."
-  t
-  )
-
-(defun tile-has-wall-p (level y x)
-  "Determine if the tile at the y-x position in the tile grid of a level
-has a wall."
-  nil
-  )
-
 (defun tile-can-be-moved-to-p (level y x)
   "Determine if the tile at the y-x position in the tile grid of a level can be
-moved to by an entity.
-
-That is, does it contain a floor, and is it unobstructed (by a wall etc)."
-  (and (tile-has-floor-p level y x)
-       (not (tile-has-wall-p level y x))))
+moved to by an entity."
+  (and (tile-is-floor-p (get-tile level y x))
+       (null (get-entity level y x))))

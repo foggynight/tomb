@@ -1,13 +1,20 @@
 (in-package :tomb)
 
+(defparameter *tile-symbol-type-alist*
+  '((#\#     . wall)
+    (#\.     . floor)
+    (#\space . void))
+  "Association list of tile symbol and type pairs.")
+
 (defstruct tile
   "Tile structure representing a tile in a world; tiles are a single cell of
 space in a world, and are the smallest amount of space which an entity can
 occupy.
 
 Tiles have a position which is inferred from their position in their containing
-data structure, a symbol used to represent the tile on-screen, and attributes
-which determine how the tile interacts with objects in a world."
+data structure, a symbol used to represent the tile on-screen, and a type which
+is inferred from the symbol that determines how the tile interacts with objects
+in a world."
   symbol)
 
 (defun string-to-tile-vector (string)
@@ -39,3 +46,13 @@ same length, returns nil when string-list is empty."
                              while line
                              collect line)))
       (string-list-to-tile-array2 string-list))))
+
+(defun tile-type (tile)
+  "Get the type of a tile based on its symbol, the type is represented by a lisp
+symbol naming the type."
+  (cdr (assoc (tile-symbol tile) *tile-symbol-type-alist*)))
+
+;; TODO Use macro to define predicate functions for each tile type
+
+(defun tile-is-floor-p (tile)
+  (eq (tile-type tile) 'floor))
