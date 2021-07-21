@@ -48,8 +48,8 @@ same length, returns nil when string-list is empty."
       (string-list-to-tile-array2 string-list))))
 
 (defun tile-type (tile)
-  "Get the type of a tile based on its symbol, the type is represented by a lisp
-symbol naming the type."
+  "Get the type of a tile based on its symbol, the type is represented by an
+atomic symbol naming the type."
   (cdr (assoc (tile-symbol tile) *tile-symbol-type-alist*)))
 
 ;; TODO Use macro to define predicate functions for each tile type
