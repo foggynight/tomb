@@ -2,10 +2,8 @@
 
 (defun main ()
   (let* ((world (generate-world '("res/test-0.lvl"
-                                  "res/test-1.lvl"
-                                  "res/test-2.lvl"
-                                  "res/test-3.lvl")))
-         (player (make-player))
+                                  "res/test-1.lvl")))
+         (player (make-player :y 1 :x 1))
          (level (move-to-first-level world player)))
     (crt:with-screen (scr :cursor-visible nil
                           :input-echoing nil
