@@ -1,9 +1,10 @@
 (in-package :tomb)
 
 (defparameter *tile-symbol-type-alist*
-  '((#\#     . wall)
-    (#\.     . floor)
-    (#\space . void))
+  '((#\.     . floor)
+    (#\%     . stairs)
+    (#\space . void)
+    (#\#     . wall))
   "Alist of tile symbol and type pairs.")
 
 (defstruct tile
@@ -56,3 +57,6 @@ atomic symbol naming the type."
 
 (defun tile-is-floor-p (tile)
   (eq (tile-type tile) 'floor))
+
+(defun tile-is-stairs-p (tile)
+  (eq (tile-type tile) 'stairs))

@@ -23,15 +23,13 @@
           (bind #\j :down)
           (bind #\k :up)
           (bind #\l :right))
-        (crt:bind win #\n
+        (crt:bind win #\>
                   (lambda (w e)
                     (declare (ignore w e))
-                    (setq level (move-to-next-level world player))
-                    (draw-level win level)))
-        (crt:bind win #\p
-                  (lambda (w e)
-                    (declare (ignore w e))
-                    (setq level (move-to-previous-level world player))
-                    (draw-level win level)))
+                    (when (level-tile-is-stairs-p level
+                                                  (entity-y player)
+                                                  (entity-x player))
+                      (setq level (move-to-next-level world player))
+                      (draw-level win level))))
         (draw-level win level)
         (crt:run-event-loop win)))))

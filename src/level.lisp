@@ -38,8 +38,15 @@ returns nil if no entity is found."
       (>= y (array-dimension (level-tiles level) 0))
       (>= x (array-dimension (level-tiles level) 1))))
 
-(defun tile-can-be-moved-to-p (level y x)
+(defun level-tile-is-stairs-p (level y x)
+  "Determine if the tile at the y-x position in the tile grid of a level is of
+the type stairs."
+  (tile-is-stairs-p (get-tile level y x)))
+
+(defun level-tile-can-be-moved-to-p (level y x)
   "Determine if the tile at the y-x position in the tile grid of a level can be
 moved to by an entity."
-  (and (tile-is-floor-p (get-tile level y x))
-       (null (get-entity level y x))))
+  (let ((tile (get-tile level y x)))
+    (and (or (tile-is-floor-p tile)
+             (tile-is-stairs-p tile))
+         (null (get-entity level y x)))))
