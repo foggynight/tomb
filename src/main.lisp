@@ -22,8 +22,6 @@
                           :dimensions '(1 71)
                           :position '(23 0))
                          (depth-window
-                          :background (make-instance 'crt:complex-char
-                                                     :simple-char #\D)
                           :dimensions '(1 8)
                           :position '(23 72)))
         (crt:bind game-window #\ 'crt:exit-event-loop)
@@ -44,8 +42,10 @@
                                                   (entity-y player)
                                                   (entity-x player))
                       (setq level (move-to-next-level world player))
+                      (draw-depth-indicator depth-window (world-current-level-index world))
                       (draw-game-view game-window level))))
-        (draw-initial-ui note-window
+        (draw-initial-ui world
+                         note-window
                          stat-window
                          depth-window)
         (draw-game-view game-window level)

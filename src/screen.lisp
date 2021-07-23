@@ -1,13 +1,26 @@
 (in-package :tomb)
 
 (defun draw-depth-indicator-label (depth-window)
+  "Draw the 'Depth:' label of the depth indicator window."
   (crt:add depth-window "Depth:" :y 0 :x 0))
 
-(defun draw-initial-ui (note-window stat-window depth-window)
+(defun draw-depth-indicator (depth-window current-level-index)
+  "Draw the depth of the player (the current level index) in the depth indicator
+window."
+  (crt:add depth-window
+           (write-to-string current-level-index)
+           :y 0 :x 7)
+  (crt:refresh depth-window))
+
+(defun draw-initial-ui (world note-window stat-window depth-window)
+  "Draw the initial UI."
   (draw-depth-indicator-label depth-window)
+  (draw-depth-indicator depth-window (world-current-level-index world))
   (mapcar #'crt:refresh (list note-window stat-window depth-window)))
 
 (defun draw-game-view (game-window level)
+  "Draw the game view, that is, the tiles and entities composing a given level,
+in the game view window."
   (crt:clear game-window)
 
   ;; Draw tiles
