@@ -14,8 +14,14 @@
     :initform #\space
     :type standard-char
     :documentation
+    "Symbol used to represent this entity on-screen.")
+   (stats
+    :accessor entity-stats
+    :initarg :stats
+    :initform nil
+    :type list
     :documentation
-    "Symbol used to represent this entity on-screen."))
+    "List of this entity's stats."))
   (:documentation
    "Entity class representing a being that can move through the world. This is
 the base class for the various entity types in the game."))
@@ -25,6 +31,8 @@ the base class for the various entity types in the game."))
 
 (defmethod entity-x ((obj entity))
   (cdr (entity-pos obj)))
+
+;; TODO Define setf methods for entity-y and entity-x
 
 (defmethod move ((obj entity) direction)
   "Move an entity in the direction specified by the direction keyword."
