@@ -13,7 +13,7 @@ window."
   (crt:refresh depth-window))
 
 (defun draw-initial-ui (world note-window stat-window depth-window)
-  "Draw the initial UI."
+  "Draw the initial UI, not including the game view."
   (draw-depth-indicator-label depth-window)
   (draw-depth-indicator depth-window (world-current-level-index world))
   (mapcar #'crt:refresh (list note-window stat-window depth-window)))
