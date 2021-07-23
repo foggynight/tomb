@@ -12,6 +12,7 @@
   :serial t
   :components ((:file "package")
 
+               (:file "stat")
                (:file "entity")
 
                (:file "tile")
