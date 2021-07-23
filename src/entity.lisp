@@ -1,36 +1,36 @@
 (in-package :tomb)
 
 (defclass entity ()
-  ((y
-    :accessor entity-y
-    :initarg :y
-    :initform 0
+  ((pos
+    :accessor entity-pos
+    :initarg :pos
+    :initform '(0 . 0)
+    :type cons
     :documentation
-    "y position of this entity -- index of the row which contains this entity.")
-   (x
-    :accessor entity-x
-    :initarg :x
-    :initform 0
-    :documentation
-    "x position of this entity -- index of the cell in its containing row which
-contains this entity.")
+    "Position of this entity represented by a cons pair.")
    (symbol
     :accessor entity-symbol
     :initarg :symbol
     :initform #\space
+    :type standard-char
+    :documentation
     :documentation
     "Symbol used to represent this entity on-screen."))
   (:documentation
-   "Entity class representing a being in the world that can move and collides
-with objects in the world.
+   "Entity class representing a being that can move through the world. This is
+the base class for the various entity types in the game."))
 
-This is the base class for the various entity types in the game."))
+(defmethod entity-y ((obj entity))
+  (car (entity-pos obj)))
+
+(defmethod entity-x ((obj entity))
+  (cdr (entity-pos obj)))
 
 (defmethod move ((obj entity) direction)
   "Move an entity in the direction specified by the direction keyword."
   (let* ((dir (crt:get-direction direction)))
-    (setf (entity-y obj) (+ (entity-y obj) (car dir)))
-    (setf (entity-x obj) (+ (entity-x obj) (cadr dir)))))
+    (setf (entity-pos obj) (cons (+ (entity-y obj) (car dir))
+                                 (+ (entity-x obj) (cadr dir))))))
 
 (defmethod attack ((obj entity) (target entity))
   "Direct an entity to attack another entity."
@@ -42,27 +42,27 @@ This is the base class for the various entity types in the game."))
 it contains another entity and attack the entity if so, otherwise move to the
 target position."
   (let* ((dir (crt:get-direction direction))
-         (y (+ (entity-y obj) (car dir)))
-         (x (+ (entity-x obj) (cadr dir))))
-    (unless (or (position-out-of-bounds-p level y x)
-                (not (level-tile-can-be-moved-to-p level y x)))
-      (let ((target-entity (get-entity level y x)))
+         (target-y (+ (entity-y obj) (car dir)))
+         (target-x (+ (entity-x obj) (cadr dir))))
+    (unless (or (position-out-of-bounds-p level target-y target-x)
+                (not (level-tile-can-be-moved-to-p level target-y target-x)))
+      (let ((target-entity (get-entity level target-y target-x)))
         (if target-entity
             (attack obj target-entity)
             (move obj direction))))))
 
-(defclass player (entity)
-  ()
+(defclass player (entity) ()
   (:documentation
    "Player class representing the player's character in the world, player is a
 child class of entity."))
 
-(defun make-player (&key (y 0) (x 0) (symbol #\@))
-  "Make a new player."
-  (make-instance 'player :y y :x x :symbol symbol))
+(defun make-player (&key (y nil) (x nil) (pos nil) (symbol #\@))
+  "Make a new player object."
+  (if (and y x)
+      (make-instance 'player :pos (cons y x) :symbol symbol)
+      (make-instance 'player :pos pos :symbol symbol)))
 
-(defclass enemy (entity)
-  ()
+(defclass enemy (entity) ()
   (:documentation
    "Enemy class representing each of the enemies in the world, enemy is a child
 class of entity."))
