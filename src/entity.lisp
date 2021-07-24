@@ -8,20 +8,20 @@
     :type cons
     :documentation
     "Position of this entity represented by a cons pair.")
-   (stats
-    :accessor entity-stats
-    :initarg :stats
-    :initform nil
-    :type list
-    :documentation
-    "List of this entity's stats.")
    (symbol
     :accessor entity-symbol
     :initarg :symbol
     :initform #\space
     :type standard-char
     :documentation
-    "Symbol used to represent this entity on-screen."))
+    "Symbol used to represent this entity on-screen.")
+   (stats
+    :accessor entity-stats
+    :initarg :stats
+    :initform nil
+    :type list
+    :documentation
+    "List of this entity's stats."))
   (:documentation
    "Entity class representing a being that can move through the world. This is
 the base class for the various entity types in the game."))
