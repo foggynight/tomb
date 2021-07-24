@@ -65,7 +65,7 @@ entity if so, otherwise move to the target position."
    "Player class representing the player's character in the world, player is a
 child class of entity."))
 
-(defun make-player (&key (y nil) (x nil) (pos nil) (symbol #\@))
+(defun make-player (&key (y nil) (x nil) (pos '(0 . 0)) (symbol #\@))
   "Make a new player object."
   (if (and y x)
       (make-instance 'player :pos (cons y x) :symbol symbol)
