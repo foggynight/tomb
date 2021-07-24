@@ -5,6 +5,7 @@
                                   "res/test-1.lvl")))
          (player (make-player :y 1 :x 1))
          (level (move-to-first-level world player)))
+    (add-entity (make-instance 'entity :pos '(3 . 5) :symbol #\Z) level)
     (crt:with-screen (scr :cursor-visible nil
                           :enable-function-keys t
                           :input-echoing nil

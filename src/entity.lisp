@@ -43,8 +43,7 @@ keyword."
 
 (defmethod attack ((obj entity) (target entity))
   "Direct an entity to attack another entity."
-
-  )
+  (setf (entity-symbol target) #\X))
 
 (defmethod attempt-move ((obj entity) level direction)
   "Direct an entity to attempt to move using the following logic: if the target
