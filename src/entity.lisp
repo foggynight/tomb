@@ -35,7 +35,8 @@ the base class for the various entity types in the game."))
 ;; TODO Define setf methods for entity-y and entity-x
 
 (defmethod move ((obj entity) direction)
-  "Move an entity in the direction specified by the direction keyword."
+  "Direct an entity to move in the direction specified by the direction
+keyword."
   (let* ((dir (crt:get-direction direction)))
     (setf (entity-pos obj) (cons (+ (entity-y obj) (car dir))
                                  (+ (entity-x obj) (cadr dir))))))
@@ -46,9 +47,9 @@ the base class for the various entity types in the game."))
   )
 
 (defmethod attempt-move ((obj entity) level direction)
-  "Attempt to move an entity. If the target position can be moved to, check if
-it contains another entity and attack the entity if so, otherwise move to the
-target position."
+  "Direct an entity to attempt to move using the following logic: if the target
+position can be moved to, check if it contains another entity and attack the
+entity if so, otherwise move to the target position."
   (let* ((dir (crt:get-direction direction))
          (target-y (+ (entity-y obj) (car dir)))
          (target-x (+ (entity-x obj) (cadr dir))))
