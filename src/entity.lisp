@@ -61,7 +61,7 @@ entity if so, otherwise move to the target position."
 
 (defclass player (entity) ()
   (:documentation
-   "Player class representing the player's character in the world, player is a
+   "Player class representing the player's character in the game, player is a
 child class of entity."))
 
 (defun make-player (&key (y nil) (x nil) (pos '(0 . 0)) (symbol #\@))
@@ -72,5 +72,5 @@ child class of entity."))
 
 (defclass enemy (entity) ()
   (:documentation
-   "Enemy class representing each of the enemies in the world, enemy is a child
+   "Enemy class representing each of the enemies in the game, enemy is a child
 class of entity."))
