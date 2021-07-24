@@ -43,10 +43,10 @@ returns nil if no entity is found."
 the type stairs."
   (tile-is-stairs-p (get-tile level y x)))
 
-(defun level-tile-can-be-moved-to-p (level y x)
-  "Determine if the tile at the y-x position in the tile grid of a level can be
-moved to by an entity."
+(defun level-tile-can-contain-entity-p (level y x)
+  "Determine if the tile at the y-x position in the tile grid of a level can
+contain an entity. This function does not check if there is already an entity on
+the tile, only if it is a valid tile for an entity to be on."
   (let ((tile (get-tile level y x)))
-    (and (or (tile-is-floor-p tile)
-             (tile-is-stairs-p tile))
-         (null (get-entity level y x)))))
+    (or (tile-is-floor-p tile)
+        (tile-is-stairs-p tile))))
