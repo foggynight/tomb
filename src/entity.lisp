@@ -14,14 +14,14 @@
     :initform nil
     :type list
     :documentation
-    "List of this entity's stats."))
+    "List of this entity's stats.")
    (symbol
     :accessor entity-symbol
     :initarg :symbol
     :initform #\space
     :type standard-char
     :documentation
-    "Symbol used to represent this entity on-screen.")
+    "Symbol used to represent this entity on-screen."))
   (:documentation
    "Entity class representing a being that can move through the world. This is
 the base class for the various entity types in the game."))
