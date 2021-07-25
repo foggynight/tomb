@@ -4,27 +4,24 @@
   ((name
     :accessor stat-name
     :initarg :name
-    :initform ""
     :type string
     :documentation
     "The name of this stat.")
    (base
     :accessor stat-base
     :initarg :base
-    :initform 0
     :type integer
     :documentation
-    "The actual level which an entity has in this stat. This value will only
-change when an entity levels up in this stat.")
+    "The actual level which an entity has in this stat. This level will only
+change when an entity levels this stat up.")
    (current
     :accessor stat-current
     :initarg :current
-    :initform 0
     :type integer
     :documentation
     "The level to be used in an entity's calculations involving this stat. This
-value will change depending on the state of the game, but is initially equal to
-the base level."))
+level will change depending on the state of the game, but is initially equal to
+the stat's base level."))
   (:documentation
    "Stat class representing a single stat of an entity."))
 
