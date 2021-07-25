@@ -47,8 +47,8 @@ keyword."
 
 (defmethod attempt-move ((obj entity) level direction)
   "Direct an entity to attempt to move using the following logic: if the target
-position can be moved to, check if it contains another entity and attack the
-entity if so, otherwise move to the target position."
+position can contain an entity, check if it contains another entity and attack
+the entity if so, otherwise move to the target position."
   (let* ((dir (crt:get-direction direction))
          (target-y (+ (entity-y obj) (car dir)))
          (target-x (+ (entity-x obj) (cadr dir))))
