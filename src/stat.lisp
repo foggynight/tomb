@@ -27,3 +27,9 @@ value will change depending on the state of the game, but is initially equal to
 the base level."))
   (:documentation
    "Stat class representing a single stat of an entity."))
+
+(defun make-stat (name base &optional (current base))
+  "Make a new stat object."
+  (make-instance 'stat :name name
+                       :base base
+                       :current current))
