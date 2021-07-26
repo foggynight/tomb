@@ -21,7 +21,7 @@
     :initform nil
     :type list
     :documentation
-    "List of this entity's stats."))
+    "Alist of this entity's stats."))
   (:documentation
    "Entity class representing a being that can move through the world. This is
 the base class for the various entity types in the game."))
@@ -66,9 +66,16 @@ child class of entity."))
 
 (defun make-player (&key (y nil) (x nil) (pos '(0 . 0)) (symbol #\@))
   "Make a new player object."
-  (if (and y x)
-      (make-instance 'player :pos (cons y x) :symbol symbol)
-      (make-instance 'player :pos pos :symbol symbol)))
+  (flet ((make-initial-player-stats ()
+           (make-stat-alist '(str 10)
+                            '(dex 10)
+                            '(int 10))))
+    (let ((pos-arg (if (and y x)
+                       (cons y x)
+                       pos)))
+      (make-instance 'player :pos pos-arg
+                             :stats (make-initial-player-stats)
+                             :symbol symbol))))
 
 (defclass enemy (entity) ()
   (:documentation
