@@ -19,8 +19,6 @@
                           :dimensions '(22 80)
                           :position '(1 0))
                          (stat-win
-                          :background (make-instance 'crt:complex-char
-                                                     :simple-char #\S)
                           :dimensions '(1 71)
                           :position '(23 0))
                          (depth-win
@@ -46,6 +44,6 @@
                       (setq level (move-to-next-level world player))
                       (draw-depth-indicator depth-win (world-current-level-index world))
                       (draw-game-view game-win level))))
-        (draw-initial-ui world scr note-win stat-win depth-win)
+        (draw-initial-ui scr player world note-win stat-win depth-win)
         (draw-game-view game-win level)
         (crt:run-event-loop scr)))))
