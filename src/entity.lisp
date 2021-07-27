@@ -11,7 +11,7 @@
    (symbol
     :accessor entity-symbol
     :initarg :symbol
-    :initform #\space
+    :initform #\?
     :type standard-char
     :documentation
     "Symbol used to represent this entity on-screen.")
