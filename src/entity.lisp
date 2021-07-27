@@ -1,5 +1,16 @@
 (in-package :tomb)
 
+(defparameter *entity-max-level* 99
+  "Maximum level an entity can attain.")
+
+(defparameter *entity-level-experience-alist*
+  (let ((experience 0))
+    (loop for level from 0 to *entity-max-level*
+          do (setq experience (+ experience level))
+          collect (cons level experience)))
+  "Alist containing pairs of entity levels and the experience thresholds to
+attain those levels.")
+
 (defclass entity ()
   ((pos
     :accessor entity-pos
@@ -21,7 +32,27 @@
     :initform nil
     :type list
     :documentation
-    "Alist of this entity's stats."))
+    "Alist of this entity's stats.")
+   (experience
+    :accessor entity-experience
+    :initarg :experience
+    :initform 0
+    :type integer
+    :documentation
+    "This entity's experience, represents the amount of combat experience they
+have, and is obtained by killing enemies.
+
+Experience is used to determine the level of this entity.")
+   (level
+    :accessor entity-level
+    :initarg :level
+    :initform 0
+    :type integer
+    :documentation
+    "This entity's level, represents their level of experience in combat,
+increasing level gives bonuses to stats.
+
+Level is determined by the amount of experience this entity has."))
   (:documentation
    "Entity class representing a being that can move through the world. This is
 the base class for the various entity types in the game."))
