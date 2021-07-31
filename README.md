@@ -2,7 +2,7 @@
 
 ## Description
 
-An ASCII roguelike at the terminal, written in Common Lisp using the croatoan
+An ASCII rogue-like at the terminal, written in Common Lisp using the croatoan
 library (an ncurses wrapper), inspired by the classics: Rogue and Nethack.
 
 
