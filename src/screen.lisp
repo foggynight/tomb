@@ -4,12 +4,13 @@
   "Draw the player stats in the stat window."
   (crt:clear stat-win)
   (dolist (stat (entity-stats player))
-    (crt:add stat-win (symbol-name (stat-name stat)))
-    (crt:add stat-win ":")
-    (crt:add stat-win (write-to-string (stat-current stat)))
-    (crt:add stat-win "/")
-    (crt:add stat-win (write-to-string (stat-base stat)))
-    (crt:add stat-win " "))
+    (dolist (string (list (symbol-name (stat-name stat))
+                          ":"
+                          (write-to-string (stat-current stat))
+                          "/"
+                          (write-to-string (stat-base stat))
+                          " "))
+      (crt:add stat-win string)))
   (crt:refresh stat-win))
 
 (defun draw-depth-indicator-label (depth-win)
