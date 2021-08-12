@@ -19,11 +19,8 @@
   (crt:refresh depth-win))
 
 (defun draw-depth-indicator (depth-win current-level-index)
-  "Draw the depth of the player (the current level index) in the depth indicator
-window."
-  (crt:add depth-win
-           (write-to-string current-level-index)
-           :y 0 :x 7)
+  "Draw the player depth in the depth indicator window."
+  (crt:add depth-win (write-to-string current-level-index) :y 0 :x 7)
   (crt:refresh depth-win))
 
 (defun draw-initial-ui (scr player world note-win stat-win depth-win)
