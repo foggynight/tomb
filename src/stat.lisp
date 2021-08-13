@@ -1,4 +1,4 @@
-;;; Stat Data Structure
+;;;; Stat Data Structure
 ;;
 ;; Stats are represented using lists containing the following members:
 ;; - NAME: Atomic symbol - Name of the stat
@@ -35,12 +35,11 @@ This function takes any number of lists as arguments, each representing a stat
 to make and containing the arguments to be passed to the MAKE-STAT function.
 
 e.g.
-(make-stat-alist '(str 10)
-                 '(dex 10)
-                 '(int 10))
-=> ((STR 10 10)
-    (DEX 10 10)
-    (INT 10 10))"
-  (map 'list (lambda (e)
-               (apply #'make-stat e))
-       rest))
+ (MAKE-STAT-ALIST '(STR 10)
+                  '(DEX 10)
+                  '(INT 10))
+ => ((STR 10 10)
+     (DEX 10 10)
+     (INT 10 10))"
+  (mapcar (lambda (e) (apply #'make-stat e))
+          rest))
