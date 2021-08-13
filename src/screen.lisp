@@ -10,28 +10,21 @@
                           "/"
                           (write-to-string (stat-base stat))
                           " "))
-      (crt:add stat-win string)))
-  (crt:refresh stat-win))
+      (crt:add stat-win string))))
 
 (defun draw-depth-indicator-label (depth-win)
   "Draw the 'Depth:' label of the depth indicator window."
-  (crt:add depth-win "Depth:" :y 0 :x 0)
-  (crt:refresh depth-win))
+  (crt:add depth-win "Depth:" :y 0 :x 0))
 
 (defun draw-depth-indicator (depth-win current-level-index)
   "Draw the player depth in the depth indicator window."
-  (crt:add depth-win (write-to-string current-level-index) :y 0 :x 7)
-  (crt:refresh depth-win))
+  (crt:add depth-win (write-to-string current-level-index) :y 0 :x 7))
 
 (defun draw-initial-ui (scr player world note-win stat-win depth-win)
   "Draw the initial UI, not including the game view."
-  ;; The screen must be refreshed before drawing in the child windows; unsure if
-  ;; this is a bug in the croatoan library, or just how ncurses works.
-  (crt:refresh scr)
   (draw-player-stats stat-win player)
   (draw-depth-indicator-label depth-win)
-  (draw-depth-indicator depth-win (world-current-level-index world))
-  (mapcar #'crt:refresh (list note-win stat-win depth-win)))
+  (draw-depth-indicator depth-win (world-current-level-index world)))
 
 (defun draw-game-view (game-win level)
   "Draw the game view, that is, the tiles and entities composing a given level,
@@ -50,6 +43,4 @@ in the game view window."
   (let ((entities (level-entities level)))
     (dolist (entity entities)
       (crt:add game-win (entity-symbol entity) :y (entity-y entity)
-                                               :x (entity-x entity))))
-
-  (crt:refresh game-win))
+                                               :x (entity-x entity)))))
