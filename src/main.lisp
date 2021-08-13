@@ -1,4 +1,4 @@
-(in-package :tomb)
+(in-package #:tomb)
 
 (defun main ()
   (let* ((world (generate-world '("res/test-0.lvl"

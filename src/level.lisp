@@ -1,4 +1,4 @@
-(in-package :tomb)
+(in-package #:tomb)
 
 (defstruct level
   "Level structure representing a level in a world.

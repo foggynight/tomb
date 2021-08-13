@@ -9,7 +9,7 @@
 ;; with their names as the keys and a list containing their base and current
 ;; levels as the datums, by simply filling a list with stats.
 
-(in-package :tomb)
+(in-package #:tomb)
 
 (defun make-stat (name base &optional (current base))
   "Make a new stat with the name NAME, base level BASE, and optionally, current

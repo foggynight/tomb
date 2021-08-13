@@ -1,4 +1,4 @@
-(in-package :tomb)
+(in-package #:tomb)
 
 (defparameter *tile-symbol-type-alist*
   '((#\.     . floor)

@@ -1,4 +1,4 @@
-(in-package :tomb)
+(in-package #:tomb)
 
 (defparameter *entity-max-level* 99
   "Maximum level an entity can attain.")

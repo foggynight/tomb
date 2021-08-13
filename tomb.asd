@@ -1,11 +1,11 @@
-(asdf:defsystem :tomb
+(asdf:defsystem #:tomb
   :author "Robert Coffey"
   :license "GPLv2"
   :version "0.1.0"
 
   :build-operation "asdf:program-op"
   :build-pathname "../tomb"
-  :depends-on (:croatoan)
+  :depends-on (#:croatoan)
   :entry-point "tomb:main"
   :pathname "src/"
 

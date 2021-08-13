@@ -1,3 +1,3 @@
-(defpackage :tomb
-  (:use :cl)
-  (:export :main))
+(defpackage #:tomb
+  (:use #:cl)
+  (:export #:main))

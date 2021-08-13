@@ -1,4 +1,4 @@
-(in-package :tomb)
+(in-package #:tomb)
 
 (defun draw-player-stats (stat-win player)
   "Draw the player stats in the stat window."
