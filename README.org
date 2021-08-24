@@ -7,18 +7,17 @@ library (an ncurses wrapper), inspired by the classics: Rogue and Nethack.
 
 * Installation
 
-Using SBCL and ASDF:
+Using SBCL and Quicklisp:
 #+begin_src shell
-sbcl --eval '(asdf:make :tomb)'
+sbcl --eval "(progn (ql:quickload :croatoan) (exit))"
+sbcl --load tomb.asd --eval "(asdf:make :tomb)"
 #+end_src
 
 * Dependencies
 
 - SBCL
+- Quicklisp
 - ncurses
-- croatoan
-
-**Note:** croatoan can be installed using Quicklisp: ~(ql:quickload :croatoan)~
 
 * License
 
